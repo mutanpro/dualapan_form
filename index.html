@@ -19,31 +19,50 @@
         }
 
         body {
-            background: radial-gradient(circle at center, #1c2327 0%, #0f1215 100%);
+            /* Latar Belakang Foto Bertema Fotografi (Bisa diganti dengan link foto IG kamu nanti) */
+            background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1920'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #e2e8f0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 30px 20px;
+            position: relative;
         }
 
-        /* Pernak-pernik: Efek glow emas di sekitar form */
+        /* Gelap transparan di atas foto agar teks formulir tetap terbaca jelas */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(10, 12, 15, 0.65); 
+            z-index: 1;
+        }
+
+        /* Container utama formulir */
         .container {
-            background: rgba(22, 28, 32, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(22, 28, 32, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 40px;
             border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.05), 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.08), 0 25px 60px rgba(0, 0, 0, 0.6);
             width: 100%;
             max-width: 460px;
             position: relative;
             overflow: hidden;
+            z-index: 2; /* Menampilkan form di atas background */
         }
 
-        /* Dekorasi garis emas tipis di bagian atas kartu */
+        /* Garis dekorasi emas tipis di bagian atas kartu */
         .container::before {
             content: '';
             position: absolute;
@@ -59,12 +78,12 @@
             margin-bottom: 35px;
         }
 
-        /* Pernak-pernik: Ikon kamera estetik di atas judul */
+        /* Ikon kamera berkedip halus */
         .header-icon {
             color: #d4af37;
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 12px;
-            opacity: 0.8;
+            opacity: 0.9;
             animation: pulse 2s infinite alternate;
         }
 
@@ -97,14 +116,13 @@
             letter-spacing: 0.5px;
         }
 
-        /* Pernak-pernik: Menambahkan ikon di dalam input box jika diinginkan, 
-           namun untuk kesederhanaan kita buat input yang super clean & modern */
+        /* Styling Input Dasar */
         input[type="text"],
         input[type="date"],
         select {
             width: 100%;
             padding: 14px 16px;
-            background: rgba(15, 18, 21, 0.7);
+            background: rgba(15, 18, 21, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             font-size: 14px;
@@ -113,17 +131,29 @@
             outline: none;
         }
 
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            filter: invert(1) sepia(50%) saturate(1000%) hue-rotate(5deg);
-            opacity: 0.7;
-            cursor: pointer;
+        /* PERBAIKAN DATEPICKER TOTAL (Ikon Kalender Emas Kustom) */
+        input[type="date"] {
+            position: relative;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="%23d4af37" viewBox="0 0 16 16"><path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>');
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        /* Pembungkus Dropdown */
         .select-wrapper {
             position: relative;
         }
         
-        /* Panah dropdown kustom yang lebih manis */
+        /* Ikon panah kustom untuk dropdown */
         .select-wrapper::after {
             content: '\f107';
             font-family: 'Font Awesome 6 Free';
@@ -137,10 +167,11 @@
             pointer-events: none;
         }
 
+        /* Efek fokus input saat di klik */
         input:focus,
         select:focus {
             border-color: #d4af37;
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
             background: rgba(15, 18, 21, 0.9);
         }
 
@@ -149,7 +180,7 @@
             color: #ffffff;
         }
 
-        /* Pernak-pernik: Tombol interaktif dengan ikon WA */
+        /* Tombol Booking */
         button {
             width: 100%;
             padding: 16px;
@@ -172,7 +203,7 @@
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
             background: linear-gradient(135deg, #e5c158 0%, #c49a2b 100%);
         }
 
@@ -200,7 +231,7 @@
 
         /* Animasi nafas untuk ikon kamera */
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
+            0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(1.1); opacity: 1; }
         }
     </style>
@@ -263,7 +294,6 @@
         const dateInput = document.getElementById('tanggal');
         const today = new Date();
         
-        // Format YYYY-MM-DD agar bisa dibaca oleh input type="date"
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
@@ -271,11 +301,11 @@
         dateInput.value = `${year}-${month}-${day}`;
     });
 
-    // KIRIM DATA KE WHATSAPP
+    // PROSES KIRIM DATA KE WHATSAPP DUALAPAHAN
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Nomor WA kamu otomatis terpasang
+        // Menggunakan nomor WA yang Anda berikan
         const nomorWA = "6285726797198"; 
 
         const nama = document.getElementById('nama').value;
@@ -283,13 +313,13 @@
         const lokasi = document.getElementById('lokasi').value;
         const tanggal = document.getElementById('tanggal').value;
 
-        // Merapikan tanggal dari YYYY-MM-DD ke DD/MM/YYYY saat dikirim di WA
+        // Memformat tanggal dari YYYY-MM-DD ke DD/MM/YYYY saat dikirim ke WhatsApp
         const dateObj = new Date(tanggal);
         const formattedDate = !isNaN(dateObj) 
             ? `${String(dateObj.getDate()).padStart(2, '0')}/${String(dateObj.getMonth() + 1).padStart(2, '0')}/${dateObj.getFullYear()}`
             : tanggal;
 
-        // Template Pesan WA yang rapi dan elegan
+        // Template Pesan WA Profesional
         const pesan = `Halo *Dualapahan Photography*,%0Asaya ingin menanyakan ketersediaan jadwal untuk booking slot:%0A%0A` +
                       `✨ *Detail Client* ✨%0A` +
                       `• *Nama:* ${nama}%0A` +
