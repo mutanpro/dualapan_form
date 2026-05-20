@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dualapahan Photography - Booking Form</title>
+    <title>Dualapan__photography - Booking Form</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,9 +84,9 @@
         h2 {
             font-family: 'Playfair Display', serif;
             color: #d4af37;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             margin-bottom: 6px;
         }
 
@@ -110,7 +110,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- PERBAIKAN STRUKTUR INPUT AGAR PROPOSIONAL & SERAGAM --- */
         input[type="text"],
         input[type="date"],
         select,
@@ -129,20 +128,17 @@
             appearance: none;
         }
 
-        /* Khusus Textarea Catatan */
         textarea {
             resize: vertical;
             min-height: 80px;
             font-family: inherit;
         }
 
-        /* Memastikan ukuran tinggi Datepicker sama presisi dengan yang lain */
         input[type="date"] {
             height: 48px; 
             line-height: 1.5;
         }
 
-        /* Indikator Kalender Emas Kustom */
         input[type="date"]::-webkit-calendar-picker-indicator {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23d4af37" viewBox="0 0 16 16"><path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>');
             background-repeat: no-repeat;
@@ -236,7 +232,7 @@
 <div class="container">
     <div class="header-zone">
         <div class="header-icon"><i class="fa-solid fa-camera-retro"></i></div>
-        <h2>Dualapahan Photography</h2>
+        <h2>Dualapan__photography</h2>
         <p class="subtitle">Reservation Form</p>
     </div>
     
@@ -284,7 +280,7 @@
     </form>
 
     <div class="footer-text">
-        © 2026 Dualapahan Photography. Connect via <a href="https://www.instagram.com/dualapan__photography/" target="_blank"><i class="fa-brands fa-instagram"></i> @dualapan__photography</a>
+        © 2026 Dualapan__photography. Connect via <a href="https://www.instagram.com/dualapan__photography/" target="_blank"><i class="fa-brands fa-instagram"></i> @dualapan__photography</a>
     </div>
 </div>
 
@@ -318,11 +314,10 @@
             ? `${String(dateObj.getDate()).padStart(2, '0')}/${String(dateObj.getMonth() + 1).padStart(2, '0')}/${dateObj.getFullYear()}`
             : tanggal;
 
-        // Mengatur teks catatan jika kosong
         const teksCatatan = catatan.trim() !== "" ? catatan : "-";
 
-        // Template Pesan WhatsApp
-        const pesan = `Halo *Dualapahan Photography*,%0Asaya ingin menanyakan ketersediaan jadwal untuk booking slot:%0A%0A` +
+        // Template Pesan WhatsApp dengan Nama yang benar
+        const pesan = `Halo *Dualapan__photography*,%0Asaya ingin menanyakan ketersediaan jadwal untuk booking slot:%0A%0A` +
                       `✨ *Detail Client* ✨%0A` +
                       `• *Nama:* ${nama}%0A` +
                       `• *Acara:* ${acara}%0A` +
