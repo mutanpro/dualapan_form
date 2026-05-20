@@ -3,107 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dualapahan Photografi - Booking Form</title>
+    <title>Dualapahan Photography - Booking Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background: #f4f7f6;
+            background: linear-gradient(135deg, #121619 0%, #1a2024 100%);
+            color: #e2e8f0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .container {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: rgba(26, 32, 36, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
+            transition: all 0.3s ease;
+        }
+
+        .header-zone {
+            text-align: center;
+            margin-bottom: 35px;
         }
 
         h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 24px;
+            font-family: 'Playfair Display', serif;
+            color: #d4af37; /* Warna Gold Elegan */
+            font-size: 28px;
             font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            position: relative;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
-            color: #555;
+            margin-bottom: 9px;
+            color: #cbd5e1;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
 
         input[type="text"],
-        input[type="date"] {
+        input[type="date"],
+        select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: border-color 0.3s;
+            padding: 14px 16px;
+            background: rgba(18, 22, 25, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 14px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            outline: none;
+            -webkit-appearance: none; /* Reset style default iOS */
         }
 
-        input:focus {
-            border-color: #25D366;
-            outline: none;
+        /* Styling khusus untuk input date agar ikonnya tidak berantakan di dark mode */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        /* Styling dropdown arrow kustom */
+        .select-wrapper {
+            position: relative;
+        }
+        .select-wrapper::after {
+            content: '▾';
+            font-size: 16px;
+            color: #94a3b8;
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+            background: rgba(18, 22, 25, 0.9);
+        }
+
+        select option {
+            background: #1a2024;
+            color: #ffffff;
         }
 
         button {
             width: 100%;
-            padding: 14px;
-            background-color: #25D366;
-            color: white;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37 0%, #aa841e 100%);
+            color: #121619;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            margin-top: 10px;
         }
 
         button:hover {
-            background-color: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, #e5c158 0%, #c49a2b 100%);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 25px;
+        }
+
+        .footer-text a {
+            color: #d4af37;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Dualapahan Photografi</h2>
+    <div class="header-zone">
+        <h2>Dualapahan Photography</h2>
+        <p class="subtitle">Reservation & Booking Form</p>
+    </div>
+    
     <form id="bookingForm">
         <div class="form-group">
             <label for="nama">Nama Client *</label>
-            <input type="text" id="nama" required placeholder="Masukkan nama Anda">
+            <input type="text" id="nama" required placeholder="Nama lengkap Anda">
         </div>
 
         <div class="form-group">
             <label for="acara">Jenis Acara *</label>
-            <input type="text" id="acara" required placeholder="Contoh: Wedding, Prewedding, Wisuda">
+            <div class="select-wrapper">
+                <select id="acara" required>
+                    <option value="" disabled selected>Pilih kategori event</option>
+                    <option value="Wedding">Wedding (Pernikahan)</option>
+                    <option value="Prewedding">Prewedding</option>
+                    <option value="Engagement">Engagement (Tunangan)</option>
+                    <option value="Wisuda / Graduation">Wisuda / Graduation</option>
+                    <option value="Event / Birthday">Event / Birthday Party</option>
+                    <option value="Studio Session">Studio Session</option>
+                    <option value="Lainnya">Lainnya (Tulis di lokasi/catatan)</option>
+                </select>
+            </div>
         </div>
 
         <div class="form-group">
-            <label for="lokasi">Lokasi *</label>
-            <input type="text" id="lokasi" required placeholder="Masukkan lokasi acara">
+            <label for="lokasi">Lokasi Acara *</label>
+            <input type="text" id="lokasi" required placeholder="Contoh: Gedung / Rumah / Kota">
         </div>
 
         <div class="form-group">
@@ -111,16 +202,20 @@
             <input type="date" id="tanggal" required>
         </div>
 
-        <button type="submit">Kirim ke WhatsApp</button>
+        <button type="submit">Check Availability via WhatsApp</button>
     </form>
+
+    <div class="footer-text">
+        © 2026 Dualapahan Photography. Built for <a href="https://www.instagram.com/dualapan__photography/" target="_blank">@dualapan__photography</a>
+    </div>
 </div>
 
 <script>
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // GANTI NOMOR INI dengan nomor WhatsApp kamu (gunakan kode negara, misal 62 untuk Indonesia)
-        const nomorWA = "6281234567890"; 
+        // Nomor WhatsApp sudah otomatis diset ke nomor kamu
+        const nomorWA = "6285726797198"; 
 
         // Mengambil data dari input
         const nama = document.getElementById('nama').value;
@@ -128,17 +223,25 @@
         const lokasi = document.getElementById('lokasi').value;
         const tanggal = document.getElementById('tanggal').value;
 
-        // Format pesan teks
-        const pesan = `Halo Dualapahan Photografi, saya ingin melakukan booking:%0A%0A` +
-                      `*Nama Client:* ${nama}%0A` +
-                      `*Jenis Acara:* ${acara}%0A` +
-                      `*Lokasi:* ${lokasi}%0A` +
-                      `*Tanggal Acara:* ${tanggal}`;
+        // Merapikan format tanggal (YYYY-MM-DD menjadi DD/MM/YYYY agar lebih estetik)
+        const dateObj = new Date(tanggal);
+        const formattedDate = !isNaN(dateObj) 
+            ? `${String(dateObj.getDate()).padStart(2, '0')}/${String(dateObj.getMonth() + 1).padStart(2, '0')}/${dateObj.getFullYear()}`
+            : tanggal;
 
-        // Link menuju WhatsApp
+        // Format pesan teks teks WhatsApp yang rapi dan profesional
+        const pesan = `Halo *Dualapahan Photography*,%0Asaya ingin menanyakan ketersediaan jadwal untuk booking slot:%0A%0A` +
+                      `✨ *Detail Client* ✨%0A` +
+                      `• *Nama:* ${nama}%0A` +
+                      `• *Acara:* ${acara}%0A` +
+                      `• *Lokasi:* ${lokasi}%0A` +
+                      `• *Tanggal:* ${formattedDate}%0A%0A` +
+                      `Apakah slot pada tanggal tersebut masih tersedia? Terima kasih!`;
+
+        // Link menuju WhatsApp web/apps
         const urlWA = `https://api.whatsapp.com/send?phone=${nomorWA}&text=${pesan}`;
 
-        // Buka tab baru menuju WhatsApp
+        // Buka chat WhatsApp di tab baru
         window.open(urlWA, '_blank');
     });
 </script>
