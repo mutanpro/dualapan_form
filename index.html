@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dualapahan Photografi - Booking Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #25D366;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background-color: #20ba5a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Dualapahan Photografi</h2>
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="nama">Nama Client *</label>
+            <input type="text" id="nama" required placeholder="Masukkan nama Anda">
+        </div>
+
+        <div class="form-group">
+            <label for="acara">Jenis Acara *</label>
+            <input type="text" id="acara" required placeholder="Contoh: Wedding, Prewedding, Wisuda">
+        </div>
+
+        <div class="form-group">
+            <label for="lokasi">Lokasi *</label>
+            <input type="text" id="lokasi" required placeholder="Masukkan lokasi acara">
+        </div>
+
+        <div class="form-group">
+            <label for="tanggal">Tanggal Acara *</label>
+            <input type="date" id="tanggal" required>
+        </div>
+
+        <button type="submit">Kirim ke WhatsApp</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // GANTI NOMOR INI dengan nomor WhatsApp kamu (gunakan kode negara, misal 62 untuk Indonesia)
+        const nomorWA = "6281234567890"; 
+
+        // Mengambil data dari input
+        const nama = document.getElementById('nama').value;
+        const acara = document.getElementById('acara').value;
+        const lokasi = document.getElementById('lokasi').value;
+        const tanggal = document.getElementById('tanggal').value;
+
+        // Format pesan teks
+        const pesan = `Halo Dualapahan Photografi, saya ingin melakukan booking:%0A%0A` +
+                      `*Nama Client:* ${nama}%0A` +
+                      `*Jenis Acara:* ${acara}%0A` +
+                      `*Lokasi:* ${lokasi}%0A` +
+                      `*Tanggal Acara:* ${tanggal}`;
+
+        // Link menuju WhatsApp
+        const urlWA = `https://api.whatsapp.com/send?phone=${nomorWA}&text=${pesan}`;
+
+        // Buka tab baru menuju WhatsApp
+        window.open(urlWA, '_blank');
+    });
+</script>
+
+</body>
+</html>
